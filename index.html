@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script src="script.js" defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Finance Dashboard</title>
@@ -13,12 +14,19 @@
     <main>
       <section>
         <h2>My Goals</h2>
-        <ol>
-          <li>Make payments on time</li>
-          <li>Pay down debt</li>
-          <li>Save for a house</li>
-          <li>Save for a trip to France</li>
-        </ol>
+        <section id="goals-list-content">
+          <p id="no-goals-note">
+            Add goals like "pay down debt" or "save for a vacation".
+          </p>
+          <ol id="goals-list">
+            <li>test</li>
+          </ol>
+        </section>
+        <form id="input-goal" hidden>
+          <input type="text" id="new-goal" name="new-goal" />
+          <button type="button" id="add-entered-goal-btn">Add</button>
+        </form>
+        <button id="btn-edit-goals">Add Goals</button>
       </section>
       <section>
         <h2>My Action Items</h2>

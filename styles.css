@@ -58,8 +58,29 @@ th {
   text-align: left;
 }
 
-tfoot tr td {
+tfoot > tr > td {
   font-style: bold;
+}
+
+#input-goal {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+
+#input-goal[hidden] {
+  display: none !important;
+}
+
+#add-entered-goal-btn {
+  font-size: 1rem;
+}
+
+#new-goal {
+  height: 1.5rem;
+  flex-grow: 1;
+  font-size: 1rem;
 }
 
 @media only screen and (min-width: 780px) {
