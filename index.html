@@ -18,9 +18,7 @@
           <p id="no-goals-note">
             Add goals like "pay down debt" or "save for a vacation".
           </p>
-          <ol id="goals-list">
-            <li>test</li>
-          </ol>
+          <ol id="goals-list" hidden></ol>
         </section>
         <form id="input-goal" hidden>
           <input type="text" id="new-goal" name="new-goal" />
@@ -30,14 +28,16 @@
       </section>
       <section>
         <h2>My Action Items</h2>
-        <ul>
-          <li>Make transfers</li>
-          <ol>
-            <li>Transfer $200 from BOTW to DISC</li>
-          </ol>
-          <li>Reduce spending on snacks</li>
-          <li>Cancel Disney Plus</li>
-        </ul>
+        <p id="no-action-items-note">
+          Add action items like "Cancel subscription" or "Transfer funds to
+          savings on the 3rd"
+        </p>
+        <ul id="action-items-list" hidden></ul>
+        <form id="input-action-item" hidden>
+          <input type="text" id="new-action-item" name="new-action-item" />
+          <button type="button" id="add-entered-action-item-btn">Add</button>
+        </form>
+        <button id="btn-edit-action-items">Add Action Items</button>
       </section>
       <section>
         <h2>Quick Actions</h2>
