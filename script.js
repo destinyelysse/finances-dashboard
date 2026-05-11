@@ -12,8 +12,19 @@ const addActionItemBtn = document.getElementById("add-entered-action-item-btn");
 const editActionItemsBtn = document.getElementById("btn-edit-action-items");
 const actionInput = document.getElementById("input-action-item");
 
+const noAccountsNote = document.getElementById("no-accounts-note");
+const accountsTable = document.getElementById("accounts-table");
+const accountsRows = document.getElementById("accounts-rows");
+const newAccountForm = document.getElementById("new-account-form");
+const accountNameInput = document.getElementById("acct-name-input");
+const accountBalanceInput = document.getElementById("acct-balance-input");
+const accountType = document.getElementById("acct-type-select");
+const addNewAcctBtn = document.getElementById("add-entered-account");
+const editAcctsBtn = document.getElementById("new-account-btn");
+
 const goals = [];
 const actionItems = [];
+const accounts = [];
 
 function toggleEditGoals() {
   goalInput.hidden = !goalInput.hidden;
@@ -57,8 +68,48 @@ function addActionItemsToList() {
   newActionInput.value = "";
 }
 
+function toggleEditAccts() {
+  newAccountForm.hidden = !newAccountForm.hidden;
+  editAcctsBtn.textContent = newAccountForm.hidden ? "Edit Accounts" : "Done";
+}
+
+function accountListContentManager() {
+  noAccountsNote.hidden = accounts.length !== 0;
+  accountsTable.hidden = accounts.length == 0;
+}
+
+function addAccountToTable() {
+  const newAccountName = accountNameInput.value;
+  const newAccountBalance = "$" + accountBalanceInput.value;
+  const newAccountType = accountType.value;
+  const newAccount = {
+    name: newAccountName,
+    balance: newAccountBalance,
+    type: newAccountType,
+  };
+  accounts.push(newAccount);
+  const newAcctRow = document.createElement("tr");
+  const newAccountNameTd = document.createElement("td");
+  newAccountNameTd.textContent = newAccountName;
+  const newAccountBalanceTd = document.createElement("td");
+  newAccountBalanceTd.textContent = newAccountBalance;
+  const newAccountTypeTd = document.createElement("td");
+  newAccountTypeTd.textContent = newAccountType;
+  newAcctRow.append(newAccountNameTd);
+  newAcctRow.append(newAccountBalanceTd);
+  newAcctRow.append(newAccountTypeTd);
+  accountsRows.append(newAcctRow);
+  accountListContentManager();
+  accountNameInput.value = "";
+  accountBalanceInput.value = "";
+  accountType.value = "";
+}
+
 editGoalsBtn.onclick = toggleEditGoals;
 addGoalBtn.onclick = addGoalToList;
 
 editActionItemsBtn.onclick = toggleEditActionItems;
 addActionItemBtn.onclick = addActionItemsToList;
+
+editAcctsBtn.onclick = toggleEditAccts;
+addNewAcctBtn.onclick = addAccountToTable;

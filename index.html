@@ -46,39 +46,17 @@
       </section>
       <section>
         <h2>Account Balances</h2>
-        <table>
+        <p id="no-accounts-note">
+          List your accounts here. Remember to use nicknames and avoid entering
+          your full account number!
+        </p>
+        <table id="accounts-table" hidden>
           <thead>
             <th scope="col">Account Name</th>
             <th scope="col">Current Balance</th>
             <th scope="col">Type</th>
           </thead>
-          <tbody>
-            <tr>
-              <td>BOTW 1122</td>
-              <td>$200</td>
-              <td>Checking</td>
-            </tr>
-            <tr>
-              <td>BOTW 3344</td>
-              <td>$1000</td>
-              <td>Savings</td>
-            </tr>
-            <tr>
-              <td>Disc 1234</td>
-              <td>$100</td>
-              <td>Savings</td>
-            </tr>
-            <tr>
-              <td>Disc Loan</td>
-              <td>-$1800</td>
-              <td>Personal Loan</td>
-            </tr>
-            <tr>
-              <td>Disc Card</td>
-              <td>$500</td>
-              <td>Credit Card</td>
-            </tr>
-          </tbody>
+          <tbody id="accounts-rows"></tbody>
           <tfoot>
             <tr>
               <td>Total Value</td>
@@ -86,8 +64,25 @@
             </tr>
           </tfoot>
         </table>
-        <button>Manage</button>
-        <button>Add New</button>
+        <form id="new-account-form" hidden>
+          <input id="acct-name-input" type="text" name="acct-name" required />
+          <input
+            id="acct-balance-input"
+            type="number"
+            name="acct-balance"
+            required
+          />
+          <select id="acct-type-select" name="acct-type" required>
+            <option value="Checking">Checking</option>
+            <option value="Savings">Savings</option>
+            <option value="Other Asset">Other Asset</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Loan">Checking</option>
+            <option value="Other Debt">Checking</option>
+          </select>
+          <button type="button" id="add-entered-account">Add</button>
+        </form>
+        <button id="new-account-btn">Add New</button>
       </section>
       <section id="upcoming-transactions">
         <h2>Upcoming Transactions</h2>
