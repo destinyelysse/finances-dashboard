@@ -1,33 +1,59 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 
 :root {
-  --blue: #00aeff;
-  --green: #00de94;
-  --lime-green: #00ff52;
+  --bg-dark: HSL(0, 0%, 90%);
+  --bg: HSL(0, 0%, 95%);
+  --bg-light: HSL(0, 0%, 100%);
+  --accent: HSL(205, 100%, 50%);
+  --accent-muted: HSL(205, 100%, 60%);
+  --text-heading: HSL(0, 0%, 5%);
+  --text-muted: HSL(0, 0%, 25%);
+  --border: var(--bg);
+  --border-card: solid 1px var(--border);
+  --shadow:
+    0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-dark: HSL(0, 0%, 0%);
+    --bg: HSL(0, 0%, 5%);
+    --bg-light: HSL(0, 0%, 10%);
+    --accent: hsl(195, 50%, 60%);
+    --accent-muted: HSL(195, 40%, 60%);
+    --text-heading: HSL(0, 0%, 95%);
+    --text-muted: HSL(0, 0%, 75%);
+    --border: HSL(0, 0%, 20%);
+    --border-card: solid 1px var(--border);
+    --shadow:
+      0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15%);
+  }
 }
 
 * {
   font-family: "Figtree";
+  letter-spacing: 0.03ch;
 }
 
 body {
-  background: var(--green);
+  background: var(--bg-dark);
 }
 
 main {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px 10px;
+  gap: 15px 15px;
 }
 
 h1 {
-  color: #ffffff;
+  color: var(--accent);
   font-size: 2.5rem;
+  letter-spacing: 0.04ch;
 }
 
 h2 {
-  color: var(--blue);
+  color: var(--accent-muted);
   margin: 0.5rem;
 }
 
@@ -36,16 +62,24 @@ section {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  background: #ffffff;
+  background: var(--bg);
+  border: var(--border-card);
   border-radius: 5px;
+  box-shadow: var(--shadow);
+}
+
+p {
+  flex-grow: 1;
+  margin: 0.5rem;
 }
 
 button {
   margin: 0.5rem;
-  background: var(--lime-green);
-  color: #000000;
+  background: var(--bg-light);
+  color: var(--accent-muted);
   font-size: 1.25rem;
   padding: 0.5rem;
+  border: 1px solid var(--accent);
   border-radius: 5px;
 }
 
@@ -60,6 +94,11 @@ th {
 
 tfoot > tr > td {
   font-style: bold;
+}
+
+p,
+td {
+  color: var(--text-muted);
 }
 
 #input-goal {
