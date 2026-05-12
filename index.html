@@ -86,52 +86,33 @@
       </section>
       <section id="upcoming-transactions">
         <h2>Upcoming Transactions</h2>
-        <table>
-          <tr>
+        <p id="no-transactions-note"></p>
+        <table id="transactions-table" hidden>
+          <thead>
             <th scope="col">Date</th>
             <th scope="col">Amount</th>
             <th scope="col">Account</th>
             <th scope="col">Description</th>
             <th scope="col">Recurring</th>
-          </tr>
-          <tr>
-            <td>2026-05-08</td>
-            <td>$50</td>
-            <td>Disc Savings</td>
-            <td>Energy Drinks</td>
-            <td>Recurring</td>
-          </tr>
-          <tr>
-            <td>2026-05-08</td>
-            <td>$200</td>
-            <td>BOTW Checking</td>
-            <td>Car Insurance</td>
-            <td>Recurring</td>
-          </tr>
-          <tr>
-            <td>2026-05-09</td>
-            <td>$500</td>
-            <td>BOTW Savings</td>
-            <td>Car Payment</td>
-            <td>Recurring</td>
-          </tr>
-          <tr>
-            <td>2026-05-12</td>
-            <td>$30</td>
-            <td>Discover Credit Card</td>
-            <td>Drinks</td>
-            <td>One-Time</td>
-          </tr>
-          <tr>
-            <td>2026-05-15</td>
-            <td>$50</td>
-            <td>BOTW Checking</td>
-            <td>Internet</td>
-            <td>Recurring</td>
-          </tr>
+          </thead>
+          <tbody id="transactions-rows"></tbody>
         </table>
-        <button>See All</button>
-        <button>Add Transaction</button>
+        <form id="new-transaction-form" hidden>
+          <input type="date" id="new-transaction-date" />
+          <input type="number" id="new-transaction-amt" />
+          <select id="new-transaction-from-acct">
+            <option value="External Account">External Account</option>
+          </select>
+          <select id="new-transaction-to-acct">
+            <option value="External Account">External Account</option>
+          </select>
+          <select id="new-transaction-type">
+            <option value="Recurring">Recurring</option>
+            <option value="one-time">One-Time</option>
+          </select>
+          <button type="button" id="add-entered-transaction-btn">Add</button>
+        </form>
+        <button id="new-transaction-btn">Add Transaction</button>
       </section>
     </main>
   </body>

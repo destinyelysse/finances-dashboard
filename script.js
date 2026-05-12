@@ -22,9 +22,28 @@ const accountType = document.getElementById("acct-type-select");
 const addNewAcctBtn = document.getElementById("add-entered-account");
 const editAcctsBtn = document.getElementById("new-account-btn");
 
+const noTransactionsNote = document.getElementById("no-transactions-note");
+const transactionsTable = document.getElementById("transactions-table");
+const transactionsRows = document.getElementById("transactions-rows");
+const newTransactionForm = document.getElementById("new-transaction-form");
+const transactionDateInput = document.getElementById("new-transaction-date");
+const transactionAmountInput = document.getElementById("new-transaction-amt");
+const transactionFromAccountInput = document.getElementById(
+  "new-transaction-from-acct",
+);
+const transactionToAccountInput = document.getElementById(
+  "new-transaction-to-acct",
+);
+const transactionTypeInput = document.getElementById("new-transaction-type");
+const addNewTransactionBtn = document.getElementById(
+  "add-entered-transaction-btn",
+);
+const editTransactionsBtn = document.getElementById("new-transaction-btn");
+
 const goals = [];
 const actionItems = [];
 const accounts = [];
+const transactions = [];
 
 function toggleEditGoals() {
   goalInput.hidden = !goalInput.hidden;
@@ -105,6 +124,57 @@ function addAccountToTable() {
   accountType.value = "";
 }
 
+function toggleEditTransactions() {
+  newTransactionForm.hidden = !newTransactionForm.hidden;
+  editTransactionsBtn.textContent = newTransactionForm.hidden
+    ? "Edit Transactions"
+    : "Done";
+}
+
+function transactionListContentManager() {
+  noTransactionsNote.hidden = transactions.length !== 0;
+  transactionsTable.hidden = transactions.length == 0;
+}
+
+function addTransactionToTable() {
+  const newTransactionDate = transactionDateInput.value;
+  const newTransactionAmount = "$" + transactionAmountInput.value;
+  const newTransactionFromAccount = transactionFromAccountInput.value;
+  const newTransactionToAccount = transactionToAccountInput.value;
+  const newTransactionType = transactionTypeInput.value;
+  const newTransaction = {
+    date: newTransactionDate,
+    amount: newTransactionAmount,
+    from: newTransactionFromAccount,
+    to: newTransactionToAccount,
+    type: newTransactionType,
+  };
+  transactions.push(newTransaction);
+  const newTransactionRow = document.createElement("tr");
+  const newTransactionDateTd = document.createElement("td");
+  newTransactionDateTd.textContent = newTransactionDate;
+  const newTransactionAmountTd = document.createElement("td");
+  newTransactionAmountTd.textContent = newTransactionAmount;
+  const newTransactionFromTd = document.createElement("td");
+  newTransactionFromTd.textContent = newTransactionFromAccount;
+  const newTransactionToTd = document.createElement("td");
+  newTransactionToTd.textContent = newTransactionToAccount;
+  const newTransactionTypeTd = document.createElement("td");
+  newTransactionTypeTd.textContent = newTransactionType;
+  newTransactionRow.append(newTransactionDateTd);
+  newTransactionRow.append(newTransactionAmountTd);
+  newTransactionRow.append(newTransactionFromTd);
+  newTransactionRow.append(newTransactionToTd);
+  newTransactionRow.append(newTransactionTypeTd);
+  transactionsRows.append(newTransactionRow);
+  transactionListContentManager();
+  transactionDateInput.value = "";
+  transactionAmountInput.value = "";
+  transactionFromAccountInput.value = "";
+  transactionToAccountInput.value = "";
+  transactionTypeInput.value = "";
+}
+
 editGoalsBtn.onclick = toggleEditGoals;
 addGoalBtn.onclick = addGoalToList;
 
@@ -113,3 +183,6 @@ addActionItemBtn.onclick = addActionItemsToList;
 
 editAcctsBtn.onclick = toggleEditAccts;
 addNewAcctBtn.onclick = addAccountToTable;
+
+editTransactionsBtn.onclick = toggleEditTransactions;
+addNewTransactionBtn.onclick = addTransactionToTable;
